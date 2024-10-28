@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "883232123186",
+    "project_id": "mypetapp-489bc",
+    "storage_bucket": "mypetapp-489bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883232123186:android:4df5f3f4684f6e2560cf2b",
+        "android_client_info": {
+          "package_name": "com.echipa1.mypetapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaXaD9p3mWXsGLjmA7if3oBJITZkb-oFY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

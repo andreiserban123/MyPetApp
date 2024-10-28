@@ -1,4 +1,5 @@
 <resources>
+    <string name="client_id">883232123186-c2e9oo44jmun3ve59t7j8ub8nb5cgqns.apps.googleusercontent.com</string>
     <string name="app_name">MyPetApp</string>
     <string name="my_pet_app">My Pet App 🐈</string>
     <string name="my_pets">My Pets</string>
