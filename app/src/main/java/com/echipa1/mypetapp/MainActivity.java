@@ -2,6 +2,7 @@ package com.echipa1.mypetapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        Button launchAddPetButton = findViewById(R.id.btn_launch_add_pet);
+        launchAddPetButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, AddPet.class);
+            startActivity(intent);
         });
     }
 }

@@ -5,4 +5,34 @@
     <string name="upcoming_appointments">Upcoming Appointments</string>
     <string name="schedule_vet">Schedule Vet</string>
     <string name="add_new_pet">Add New Pet</string>
+    <string name="add_your_pet_details_here">Add your pet details here</string>
+    <string name="add_your_pet_species">Pet Specie</string>
+    <string name="your_pet_age">Your pet age</string>
+    <string name="select_the_gender">Select the gender</string>
+    <string name="select_gender_male">Male</string>
+    <string name="select_gender_female">Female</string>
+    <string name="your_pet_weight">Your pet weight</string>
+    <string name="add_pet_owener_name">Owner name</string>
+    <string name="add_pet_breed">Breed</string>
+    <string name="add_pet_name">Pet Name</string>
+    <string name="add_pet_chip_title">Has your pet a microchip?</string>
+    <string name="add_pet_chip_yes">Yes</string>
+    <string name="add_pet_chip_no">No</string>
+    <string name="add_pet_vacc_title">Has your pet the annual vaccination?</string>
+    <string name="add_pet_vacc_yes">Yes</string>
+    <string name="add_pet_vacc_no">No</string>
+    <string name="add_pet_notes">Leave your notes here</string>
+    <string name="add_invalid_owner_name">Invalid owner name</string>
+    <string name="add_invalid_breed_name">Invalid breed</string>
+    <string name="add_invalid_age">Invalid age</string>
+    <string name="add_invalid_weight">Invalid weight</string>
+    <string-array name="add_pet_species">
+        <item>Dog</item>
+        <item>Cat</item>
+        <item>Bird</item>
+        <item>Rabbit</item>
+        <item>Hamster</item>
+        <item>Fish</item>
+        <item>Turtle</item>
+    </string-array>
 </resources>
