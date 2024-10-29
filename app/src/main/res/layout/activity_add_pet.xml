@@ -12,11 +12,27 @@
         android:layout_height="wrap_content"
         android:id="@+id/main">
 
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+        android:id="@+id/timofte_serban_add_pet_icon"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        android:src="@drawable/baseline_pets_24"
+
+        android:layout_margin="12dp"
+        android:background="#0000FF"
+        />§
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/timofte_serban_add_pet_title"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/timofte_serban_add_pet_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/add_your_pet_details_here"
