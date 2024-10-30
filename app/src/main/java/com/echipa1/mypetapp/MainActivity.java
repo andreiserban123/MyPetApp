@@ -2,6 +2,7 @@ package com.echipa1.mypetapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button launchAddPetButton = findViewById(R.id.btn_launch_add_pet);
+        Button launchAddPetButton = findViewById(R.id.home_btn_add_pet);
         launchAddPetButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, AddPet.class);
             startActivity(intent);
