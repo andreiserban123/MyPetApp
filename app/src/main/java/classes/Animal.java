@@ -1,6 +1,8 @@
 package classes;
 
-public class Animal {
+import java.io.Serializable;
+
+public class Animal implements Serializable {
     private String species;
     private int age;
     private String gender;

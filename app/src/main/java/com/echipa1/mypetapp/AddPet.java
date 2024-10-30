@@ -1,5 +1,6 @@
 package com.echipa1.mypetapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -14,6 +15,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import classes.Pet;
 
@@ -30,6 +34,8 @@ public class AddPet extends AppCompatActivity {
     private RadioGroup vacc_radioGrp;
     private Button save_btn;
 
+    private Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +48,7 @@ public class AddPet extends AppCompatActivity {
         });
 
         initComponent();
+        intent = getIntent();
     }
 
     private void initComponent() {
@@ -71,9 +78,40 @@ public class AddPet extends AppCompatActivity {
                 Pet newPet = new Pet(species, age, gender, weight, petName, breed, ipt_ownerName, microchip, anual_vaccination);
                 Toast.makeText(getApplicationContext(), "Pet Created: " + newPet.getName(), Toast.LENGTH_SHORT).show();
 
+                savePetToTXT();
+                
+                intent.putExtra("PET_KEY", newPet);
+                intent.putExtra("PET_NAME", newPet.getName());
+
+                setResult(RESULT_OK, intent);
+                finish();
+                
+
                 Log.i("AddPetActivity", newPet.toString());
             }
         });
+    }
+
+    // Comment this is it does not work -> not tested
+    private void savePetToTXT(Pet pet) {
+        String petData = "Name: " + pet.getName() + "\n" +
+                "Owner: " + pet.getOwner_name() + "\n" +
+                "Species: " + pet.getSpecies() + "\n" +
+                "Breed: " + pet.getBreed() + "\n" +
+                "Gender: " + pet.getGender() + "\n" +
+                "Age: " + pet.getAge() + "\n" +
+                "Weight: " + pet.getWeight() + "\n" +
+                "Microchip: " + pet.isMicrochip() + "\n" +
+                "Annual Vaccination: " + pet.isAnual_vaccination() + "\n";
+
+        String file = "all_pets.tx";
+
+        try (FileOutputStream fos = openFileOutput(file, MODE_PRIVATE)) {
+            fos.write(petData.getBytes());
+        } catch (IOException e) {
+            Toast.makeText(this, "Error saving pet data", Toast.LENGTH_SHORT).show();
+            throw new RuntimeException(e);
+        }
     }
 
     private boolean isValid() {
