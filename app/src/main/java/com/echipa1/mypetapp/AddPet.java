@@ -78,7 +78,7 @@ public class AddPet extends AppCompatActivity {
                 Pet newPet = new Pet(species, age, gender, weight, petName, breed, ipt_ownerName, microchip, anual_vaccination);
                 Toast.makeText(getApplicationContext(), "Pet Created: " + newPet.getName(), Toast.LENGTH_SHORT).show();
 
-                savePetToTXT();
+                savePetToTXT(newPet);
                 
                 intent.putExtra("PET_KEY", newPet);
                 intent.putExtra("PET_NAME", newPet.getName());
