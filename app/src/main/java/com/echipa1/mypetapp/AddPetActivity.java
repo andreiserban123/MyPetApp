@@ -21,7 +21,7 @@ import java.io.IOException;
 
 import classes.Pet;
 
-public class AddPet extends AppCompatActivity {
+public class AddPetActivity extends AppCompatActivity {
 
     private TextInputEditText owner_name_editTxt;
     private TextInputEditText pet_name_editTxt;
@@ -79,13 +79,13 @@ public class AddPet extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Pet Created: " + newPet.getName(), Toast.LENGTH_SHORT).show();
 
                 savePetToTXT(newPet);
-                
+
                 intent.putExtra("PET_KEY", newPet);
                 intent.putExtra("PET_NAME", newPet.getName());
 
                 setResult(RESULT_OK, intent);
                 finish();
-                
+
 
                 Log.i("AddPetActivity", newPet.toString());
             }

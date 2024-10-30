@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class Pet extends Animal implements Serializable {
     private String name;
-    private  String breed;
-    private  String owner_name;
+    private String breed;
+    private String owner_name;
     private boolean microchip;
     private boolean anual_vaccination;
 
@@ -63,12 +63,6 @@ public class Pet extends Animal implements Serializable {
 
     @Override
     public String toString() {
-        return "Pet{" +
-                "name='" + name + '\'' +
-                ", breed='" + breed + '\'' +
-                ", owner_name='" + owner_name + '\'' +
-                ", microchip=" + microchip +
-                ", anual_vaccination=" + anual_vaccination +
-                '}';
+        return "NAME: " + name + ", SPECIE:" + super.getSpecies();
     }
 }

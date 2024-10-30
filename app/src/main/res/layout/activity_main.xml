@@ -5,6 +5,23 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/serban_andrei_main_btn_about"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        android:padding="0dp"
+        app:icon="@drawable/baseline_pets_24"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/serban_andrei_main_tv_header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/serban_andrei_main_tv_header" />
+
     <TextView
         android:id="@+id/serban_andrei_main_tv_header"
         style="@style/AppTextViewStyle.Header"
@@ -15,6 +32,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/serban_andrei_main_btn_profile"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        android:padding="0dp"
+        app:icon="@drawable/baseline_account_box_24"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/serban_andrei_main_tv_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/serban_andrei_main_tv_header" />
 
     <TextView
         android:id="@+id/serban_andrei_main_tv_pets"
@@ -92,5 +126,6 @@
             app:icon="@android:drawable/ic_menu_my_calendar" />
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
