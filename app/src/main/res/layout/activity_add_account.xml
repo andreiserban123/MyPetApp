@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/serban_mariana_luciana_til_phoneNumber" />
 
     <Spinner
-        android:id="@+id/serban_mariana_luciana_sp_city"
+        android:id="@+id/serban_mariana_luciana_spn_city"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="40dp"
@@ -108,6 +108,8 @@
             android:layout_height="wrap_content"
             android:hint="@string/first_name" />
     </com.google.android.material.textfield.TextInputLayout>
+
+
 
     <!--    <com.google.android.material.textfield.TextInputLayout-->
 <!--        android:id="@+id/serban_mariana_luciana_til_city"-->
