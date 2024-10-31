@@ -22,6 +22,7 @@ import java.io.IOException;
 import classes.Pet;
 
 public class AddPetActivity extends AppCompatActivity {
+    public final static String PET_KEY = "PET_KEY";
     private TextInputEditText pet_name_editTxt;
     private Spinner species_spinner;
     private TextInputEditText breed_editTxt;
@@ -76,7 +77,7 @@ public class AddPetActivity extends AppCompatActivity {
 
                 savePetToTXT(newPet);
 
-                intent.putExtra("PET_KEY", newPet);
+                intent.putExtra(PET_KEY, newPet);
                 intent.putExtra("PET_NAME", newPet.getName());
 
                 setResult(RESULT_OK, intent);

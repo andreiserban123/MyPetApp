@@ -3,7 +3,6 @@ package com.echipa1.mypetapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupListView() {
         pets = new ArrayList<>();  // Initialize the list here
-        pets.add(new Pet("Dog", 12, "Male", 23.3, "Dogo", "Pug", true, true));
+        pets.add(new Pet("Dog", 12, "Male", 23.3, "Azorel", "Pug", true, true));
         petsAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
@@ -100,11 +99,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void handleAddPetResult(Intent data) {
-        Pet newPet = data.getParcelableExtra("new_pet");
+        Pet newPet = (Pet) data.getSerializableExtra(AddPetActivity.PET_KEY);
         if (newPet != null) {
             pets.add(newPet);
             petsAdapter.notifyDataSetChanged();
-            Log.i("AddPet", pets.toString());
             Toast.makeText(this, "New pet added successfully!", Toast.LENGTH_SHORT).show();
         }
     }
