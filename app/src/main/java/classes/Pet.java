@@ -5,18 +5,16 @@ import java.io.Serializable;
 public class Pet extends Animal implements Serializable {
     private String name;
     private String breed;
-    private String owner_name;
     private boolean microchip;
     private boolean anual_vaccination;
 
     public Pet() {
     }
 
-    public Pet(String species, int age, String gender, double weight, String name, String breed, String owner_name, boolean microchip, boolean anual_vaccination) {
+    public Pet(String species, int age, String gender, double weight, String name, String breed, boolean microchip, boolean anual_vaccination) {
         super(species, age, gender, weight);
         this.name = name;
         this.breed = breed;
-        this.owner_name = owner_name;
         this.microchip = microchip;
         this.anual_vaccination = anual_vaccination;
     }
@@ -35,14 +33,6 @@ public class Pet extends Animal implements Serializable {
 
     public void setBreed(String breed) {
         this.breed = breed;
-    }
-
-    public String getOwner_name() {
-        return owner_name;
-    }
-
-    public void setOwner_name(String owner_name) {
-        this.owner_name = owner_name;
     }
 
     public boolean isMicrochip() {

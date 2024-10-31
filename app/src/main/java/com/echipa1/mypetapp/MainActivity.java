@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupListView() {
         pets = new ArrayList<>();  // Initialize the list here
-        pets.add(new Pet("Dog", 12, "Male", 23.3, "Dogo", "Pug", "florin", true, true));
+        pets.add(new Pet("Dog", 12, "Male", 23.3, "Dogo", "Pug", true, true));
         petsAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,

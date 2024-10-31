@@ -22,8 +22,6 @@ import java.io.IOException;
 import classes.Pet;
 
 public class AddPetActivity extends AppCompatActivity {
-
-    private TextInputEditText owner_name_editTxt;
     private TextInputEditText pet_name_editTxt;
     private Spinner species_spinner;
     private TextInputEditText breed_editTxt;
@@ -52,7 +50,6 @@ public class AddPetActivity extends AppCompatActivity {
     }
 
     private void initComponent() {
-        owner_name_editTxt = findViewById(R.id.timofte_serban_add_pet_tiet_owner_name);
         pet_name_editTxt = findViewById(R.id.timofte_serban_add_pet_tiet_owner_pet_name);
         species_spinner = findViewById(R.id.timofte_serban_add_pet_spinner_species);
         breed_editTxt = findViewById(R.id.timofte_serban_add_pet_tiet_breed);
@@ -65,7 +62,6 @@ public class AddPetActivity extends AppCompatActivity {
 
         save_btn.setOnClickListener(view -> {
             if (isValid()) {
-                String ipt_ownerName = owner_name_editTxt.getText().toString().trim();
                 String petName = pet_name_editTxt.getText().toString().trim();
                 String species = species_spinner.getSelectedItem().toString();
                 String breed = breed_editTxt.getText().toString().trim();
@@ -75,7 +71,7 @@ public class AddPetActivity extends AppCompatActivity {
                 boolean microchip = chip_radioGrp.getCheckedRadioButtonId() == R.id.timofte_serban_add_pet_radBtn_chip_yes;
                 boolean anual_vaccination = vacc_radioGrp.getCheckedRadioButtonId() == R.id.timofte_serban_add_pet_radBtn_vacc_yes;
 
-                Pet newPet = new Pet(species, age, gender, weight, petName, breed, ipt_ownerName, microchip, anual_vaccination);
+                Pet newPet = new Pet(species, age, gender, weight, petName, breed, microchip, anual_vaccination);
                 Toast.makeText(getApplicationContext(), "Pet Created: " + newPet.getName(), Toast.LENGTH_SHORT).show();
 
                 savePetToTXT(newPet);
@@ -95,7 +91,6 @@ public class AddPetActivity extends AppCompatActivity {
     // Comment this is it does not work -> not tested
     private void savePetToTXT(Pet pet) {
         String petData = "Name: " + pet.getName() + "\n" +
-                "Owner: " + pet.getOwner_name() + "\n" +
                 "Species: " + pet.getSpecies() + "\n" +
                 "Breed: " + pet.getBreed() + "\n" +
                 "Gender: " + pet.getGender() + "\n" +
@@ -115,12 +110,6 @@ public class AddPetActivity extends AppCompatActivity {
     }
 
     private boolean isValid() {
-        if (owner_name_editTxt.getText() == null ||
-                owner_name_editTxt.getText().toString().trim().length() < 3) {
-            Toast.makeText(getApplicationContext(), R.string.add_invalid_owner_name, Toast.LENGTH_LONG).show();
-            return false;
-        }
-
         if (breed_editTxt.getText() == null ||
                 breed_editTxt.getText().toString().trim().length() < 3) {
             Toast.makeText(getApplicationContext(), R.string.add_invalid_breed_name, Toast.LENGTH_LONG).show();
