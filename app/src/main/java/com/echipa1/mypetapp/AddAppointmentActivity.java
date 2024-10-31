@@ -28,10 +28,8 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.ByteArrayOutputStream;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import classes.Appointment;
 
@@ -62,6 +60,7 @@ public class AddAppointmentActivity extends AppCompatActivity {
                     Toast.makeText(this, "Photo capture cancelled", Toast.LENGTH_SHORT).show();
                 }
             });
+    private Calendar selectedDateTime;
     private Intent intent;
 
     @Override
@@ -106,7 +105,7 @@ public class AddAppointmentActivity extends AppCompatActivity {
         btnCamera = findViewById(R.id.surugiu_george_alexandru_btn_camera);
         btnSave = findViewById(R.id.surugiu_george_alexandru_bttnSave);
         imageView = findViewById(R.id.serban_andrei_appointment_image);
-
+        selectedDateTime = Calendar.getInstance();
         List<String> pets = intent.getStringArrayListExtra("pets");
         var petAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, pets);
         petAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -124,42 +123,16 @@ public class AddAppointmentActivity extends AppCompatActivity {
         tpHour.setMinute(0);
 
         cvDate.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
-            Calendar selectedCal = Calendar.getInstance();
-            selectedCal.set(Calendar.YEAR, year);
-            selectedCal.set(Calendar.MONTH, month);
-            selectedCal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            selectedCal.set(Calendar.HOUR_OF_DAY, 0);
-            selectedCal.set(Calendar.MINUTE, 0);
-            selectedCal.set(Calendar.SECOND, 0);
-            selectedCal.set(Calendar.MILLISECOND, 0);
+            selectedDateTime = Calendar.getInstance();
+            selectedDateTime.set(Calendar.YEAR, year);
+            selectedDateTime.set(Calendar.MONTH, month);
+            selectedDateTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            selectedDateTime.set(Calendar.HOUR_OF_DAY, tpHour.getHour());
+            selectedDateTime.set(Calendar.MINUTE, tpHour.getMinute());
+            selectedDateTime.set(Calendar.SECOND, 0);
+            selectedDateTime.set(Calendar.MILLISECOND, 0);
 
-            // For debugging
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-            Log.d("Calendar", "Selected date before weekend check: " + sdf.format(selectedCal.getTime()));
-
-            // Check if it's a weekend
-            int dayOfWeek = selectedCal.get(Calendar.DAY_OF_WEEK);
-            if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) {
-                // Move to next Monday
-                while (selectedCal.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) {
-                    selectedCal.add(Calendar.DAY_OF_MONTH, 1);
-                }
-
-                Log.d("Calendar", "Moved to Monday: " + sdf.format(selectedCal.getTime()));
-
-                // Update the CalendarView with the new date
-                final Calendar finalSelectedCal = selectedCal;
-                cvDate.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        cvDate.setDate(finalSelectedCal.getTimeInMillis(), true, true);
-                    }
-                });
-
-                Toast.makeText(AddAppointmentActivity.this,
-                        "Weekends are not available. Moved to next Monday.",
-                        Toast.LENGTH_SHORT).show();
-            }
+            Log.i("Calendar", "Selected date: " + selectedDateTime.getTime().toString());
         });
     }
 
@@ -185,25 +158,67 @@ public class AddAppointmentActivity extends AppCompatActivity {
             return false;
         }
 
-        Calendar selectedDate = Calendar.getInstance();
-        selectedDate.setTimeInMillis(cvDate.getDate());
-        selectedDate.set(Calendar.HOUR_OF_DAY, tpHour.getHour());
-        selectedDate.set(Calendar.MINUTE, tpHour.getMinute());
-        selectedDate.set(Calendar.SECOND, 0);
-        selectedDate.set(Calendar.MILLISECOND, 0);
+        // Update selected time
+        selectedDateTime.set(Calendar.HOUR_OF_DAY, tpHour.getHour());
+        selectedDateTime.set(Calendar.MINUTE, tpHour.getMinute());
+        selectedDateTime.set(Calendar.SECOND, 0);
+        selectedDateTime.set(Calendar.MILLISECOND, 0);
 
+        // Get current date/time
         Calendar currentDate = Calendar.getInstance();
-        currentDate.set(Calendar.HOUR_OF_DAY, 0);
-        currentDate.set(Calendar.MINUTE, 0);
         currentDate.set(Calendar.SECOND, 0);
         currentDate.set(Calendar.MILLISECOND, 0);
 
-        if (selectedDate.before(currentDate)) {
-            showError("Please select a future date for the appointment");
+        // Check if date is in the past
+        if (selectedDateTime.before(currentDate)) {
+            showError("Please select a future date and time");
             return false;
         }
 
+        // Check if it's a weekend
+        int dayOfWeek = selectedDateTime.get(Calendar.DAY_OF_WEEK);
+        if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) {
+            showError("Appointments are only available on weekdays");
+            return false;
+        }
+
+        // Check working hours (9 AM - 5 PM)
+        int hour = tpHour.getHour();
+        int minute = tpHour.getMinute();
+
+        if (hour < 9) {
+            showError("Appointments are only available from 9 AM");
+            return false;
+        }
+
+        if (hour >= 17) {
+            showError("Appointments are only available until 5 PM");
+            return false;
+        }
+
+        if (hour == 16 && minute > 0) {
+            showError("Last appointment must start at 4:00 PM");
+            return false;
+        }
+
+        // For same-day appointments, ensure at least 1 hour in advance
+        if (isSameDay(selectedDateTime, currentDate)) {
+            Calendar oneHourFromNow = Calendar.getInstance();
+            oneHourFromNow.add(Calendar.HOUR_OF_DAY, 1);
+
+            if (selectedDateTime.before(oneHourFromNow)) {
+                showError("Appointments must be scheduled at least 1 hour in advance");
+                return false;
+            }
+        }
+
         return true;
+    }
+
+    private boolean isSameDay(Calendar date1, Calendar date2) {
+        return date1.get(Calendar.YEAR) == date2.get(Calendar.YEAR) &&
+                date1.get(Calendar.MONTH) == date2.get(Calendar.MONTH) &&
+                date1.get(Calendar.DAY_OF_MONTH) == date2.get(Calendar.DAY_OF_MONTH);
     }
 
 
@@ -216,11 +231,9 @@ public class AddAppointmentActivity extends AppCompatActivity {
         String selectedDoctor = spnDoctor.getSelectedItem().toString();
         String reason = tietReason.getText().toString();
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(cvDate.getDate());
-        calendar.set(Calendar.HOUR_OF_DAY, tpHour.getHour());
-        calendar.set(Calendar.MINUTE, tpHour.getMinute());
-        Date appointmentDate = calendar.getTime();
+        selectedDateTime.set(Calendar.HOUR_OF_DAY, tpHour.getHour());
+        selectedDateTime.set(Calendar.MINUTE, tpHour.getMinute());
+        Date appointmentDate = selectedDateTime.getTime();
 
         Appointment appointment = new Appointment(
                 selectedPet,
@@ -236,7 +249,6 @@ public class AddAppointmentActivity extends AppCompatActivity {
             String photoBase64 = Base64.encodeToString(byteArray, Base64.DEFAULT);
             appointment.setPhotoBase64(photoBase64);
         }
-
 
         intent.putExtra("doctor", selectedDoctor);
         intent.putExtra("appointment", appointment);

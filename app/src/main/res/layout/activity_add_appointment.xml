@@ -107,6 +107,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:focusable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_tv_consultationDate" />
@@ -114,7 +116,7 @@
         <TimePicker
             android:id="@+id/surugiu_george_alexandru_tp_appointmentHour"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
             app:layout_constraintEnd_toEndOf="@id/surugiu_george_alexandru_calendarView"
