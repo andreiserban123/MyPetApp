@@ -37,6 +37,7 @@
     <string name="appointment_take_photo">Take Photo</string>
     <string name="bttn_save">Save</string>
     <string name="tv_choose_the_doctor">Choose the doctor:</string>
+    <string name="taken_picture_appointment">Taken picture</string>
     <string-array name="add_pet_species">
         <item>Dog</item>
         <item>Cat</item>
@@ -48,7 +49,7 @@
     </string-array>
     <string-array name="add_appointment_doctor">
         <item>Dr. Aurelian Dragos</item>
-        <item>Dr Anton Ciobanu</item>
+        <item>Dr. Anton Ciobanu</item>
         <item>Dr. Alecu Albu</item>
         <item>Dr. Daria Pavel</item>
         <item>Dr. Iulia Tunaru</item>

@@ -185,10 +185,20 @@ public class AddAppointmentActivity extends AppCompatActivity {
             return false;
         }
 
-        long selectedDate = cvDate.getDate();
-        long currentDate = System.currentTimeMillis();
+        Calendar selectedDate = Calendar.getInstance();
+        selectedDate.setTimeInMillis(cvDate.getDate());
+        selectedDate.set(Calendar.HOUR_OF_DAY, tpHour.getHour());
+        selectedDate.set(Calendar.MINUTE, tpHour.getMinute());
+        selectedDate.set(Calendar.SECOND, 0);
+        selectedDate.set(Calendar.MILLISECOND, 0);
 
-        if (selectedDate < currentDate) {
+        Calendar currentDate = Calendar.getInstance();
+        currentDate.set(Calendar.HOUR_OF_DAY, 0);
+        currentDate.set(Calendar.MINUTE, 0);
+        currentDate.set(Calendar.SECOND, 0);
+        currentDate.set(Calendar.MILLISECOND, 0);
+
+        if (selectedDate.before(currentDate)) {
             showError("Please select a future date for the appointment");
             return false;
         }
