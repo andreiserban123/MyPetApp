@@ -1,23 +1,18 @@
 package classes;
 
-import android.graphics.Bitmap;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.util.Base64;
-
-import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Appointment implements Parcelable {
+public class Appointment implements Serializable {
     private long id;
-    private Pet pet;
+    private String pet;
     private Date appointmentDate;
     private String veterinarianName;
     private String reason;
-    private String photoBase64;  // Store photo as Base64 string
+    private String photoBase64;
     private boolean isCompleted;
 
-    public Appointment(Pet pet, Date appointmentDate, String veterinarianName, String reason) {
+    public Appointment(String pet, Date appointmentDate, String veterinarianName, String reason) {
         this.pet = pet;
         this.appointmentDate = appointmentDate;
         this.veterinarianName = veterinarianName;
@@ -25,30 +20,6 @@ public class Appointment implements Parcelable {
         this.isCompleted = false;
     }
 
-    // Constructor with photo
-    public Appointment(Pet pet, Date appointmentDate, String veterinarianName,
-                       String reason, Bitmap photo) {
-        this(pet, appointmentDate, veterinarianName, reason);
-        setPhoto(photo);
-    }
-
-    // Photo handling methods
-    public void setPhoto(Bitmap photo) {
-        if (photo != null) {
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            photo.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-            byte[] photoBytes = stream.toByteArray();
-            this.photoBase64 = Base64.encodeToString(photoBytes, Base64.DEFAULT);
-        }
-    }
-
-    public Bitmap getPhoto() {
-        if (photoBase64 != null) {
-            byte[] photoBytes = Base64.decode(photoBase64, Base64.DEFAULT);
-            return android.graphics.BitmapFactory.decodeByteArray(photoBytes, 0, photoBytes.length);
-        }
-        return null;
-    }
 
     public long getId() {
         return id;
@@ -58,11 +29,11 @@ public class Appointment implements Parcelable {
         this.id = id;
     }
 
-    public Pet getPet() {
+    public String getPet() {
         return pet;
     }
 
-    public void setPet(Pet pet) {
+    public void setPet(String pet) {
         this.pet = pet;
     }
 
@@ -90,6 +61,14 @@ public class Appointment implements Parcelable {
         this.reason = reason;
     }
 
+    public String getPhotoBase64() {
+        return photoBase64;
+    }
+
+    public void setPhotoBase64(String photoBase64) {
+        this.photoBase64 = photoBase64;
+    }
+
     public boolean isCompleted() {
         return isCompleted;
     }
@@ -98,52 +77,16 @@ public class Appointment implements Parcelable {
         isCompleted = completed;
     }
 
-    // Parcelable implementation
-    protected Appointment(Parcel in) {
-        id = in.readLong();
-        pet = in.readParcelable(Pet.class.getClassLoader());
-        appointmentDate = new Date(in.readLong());
-        veterinarianName = in.readString();
-        reason = in.readString();
-        photoBase64 = in.readString();
-        isCompleted = in.readByte() != 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeLong(id);
-        dest.writeParcelable((Parcelable) pet, flags);
-        dest.writeLong(appointmentDate.getTime());
-        dest.writeString(veterinarianName);
-        dest.writeString(reason);
-        dest.writeString(photoBase64);
-        dest.writeByte((byte) (isCompleted ? 1 : 0));
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Creator<Appointment> CREATOR = new Creator<Appointment>() {
-        @Override
-        public Appointment createFromParcel(Parcel in) {
-            return new Appointment(in);
-        }
-
-        @Override
-        public Appointment[] newArray(int size) {
-            return new Appointment[size];
-        }
-    };
-
     @Override
     public String toString() {
         return "Appointment{" +
-                "pet=" + pet.getName() +
-                ", date=" + appointmentDate +
-                ", veterinarian='" + veterinarianName + '\'' +
+                "id=" + id +
+                ", pet='" + pet + '\'' +
+                ", appointmentDate=" + appointmentDate +
+                ", veterinarianName='" + veterinarianName + '\'' +
                 ", reason='" + reason + '\'' +
-                ", completed=" + isCompleted + '}';
+                ", photoBase64='" + photoBase64 + '\'' +
+                ", isCompleted=" + isCompleted +
+                '}';
     }
 }

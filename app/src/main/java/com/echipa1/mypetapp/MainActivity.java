@@ -17,6 +17,7 @@ import com.google.android.material.button.MaterialButton;
 import java.util.ArrayList;
 import java.util.List;
 
+import classes.Appointment;
 import classes.Pet;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,14 +27,20 @@ public class MainActivity extends AppCompatActivity {
     private static final int SCHEDULE_REQUEST = 3;
     private static final int ABOUT_REQUEST = 4;
     private List<Pet> pets;
+
     private MaterialButton aboutBtn;
     private MaterialButton profileBtn;
     private MaterialButton addPetBtn;
     private MaterialButton scheduleBtn;
 
+    private List<Appointment> appointments;
+    private ArrayAdapter<String> appointmentsAdapter;
+
     private ListView petsListView;
     private ArrayAdapter<Pet> petsAdapter;
     private ActivityResultLauncher<Intent> launcher;
+
+    private ListView appointmentsListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,20 +49,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initComponents();
-        setupListView();
+        setupPetsListView();
+        setupAppointmentsListView();
         initLauncher();
         setOnClickListeners();
     }
 
-    private void setupListView() {
+    private void setupPetsListView() {
         pets = new ArrayList<>();  // Initialize the list here
         pets.add(new Pet("Dog", 12, "Male", 23.3, "Azorel", "Pug", true, true));
+        pets.add(new Pet("Cat", 5, "Female", 2, "Maricica", "British Short Hair", true, false));
         petsAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
                 pets
         );
+
+
         petsListView.setAdapter(petsAdapter);
+    }
+
+    private void setupAppointmentsListView() {
+        appointments = new ArrayList<>();
+        appointmentsAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                new ArrayList<>()
+        );
+        appointmentsListView.setAdapter(appointmentsAdapter);
     }
 
     private void initComponents() {
@@ -64,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         addPetBtn = findViewById(R.id.serban_andrei_main_btn_add_pet);
         scheduleBtn = findViewById(R.id.serban_andrei_main_btn_schedule_vet);
         petsListView = findViewById(R.id.serban_andrei_main_lv_pets);
+        appointmentsListView = findViewById(R.id.serban_andrei_main_lv_appointments);
     }
 
     private void initLauncher() {
@@ -92,9 +114,6 @@ public class MainActivity extends AppCompatActivity {
             case SCHEDULE_REQUEST:
                 handleScheduleResult(data);
                 break;
-            case ABOUT_REQUEST:
-                // Usually no handling needed for about
-                break;
         }
     }
 
@@ -118,13 +137,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void handleScheduleResult(Intent data) {
-        // Handle new appointment data
-        boolean appointmentCreated = data.getBooleanExtra("appointment_created", false);
-        if (appointmentCreated) {
-            // Refresh appointments list
-            // refreshAppointments();
-            Toast.makeText(this, "Appointment scheduled successfully!", Toast.LENGTH_SHORT).show();
+        if (data != null) {
+            Appointment newAppointment = (Appointment) data.getSerializableExtra("appointment");
+            if (newAppointment != null) {
+                appointments.add(newAppointment);
+                updateAppointmentsList();
+                Toast.makeText(this, "Appointment scheduled successfully!", Toast.LENGTH_SHORT).show();
+            }
         }
+    }
+
+    private void updateAppointmentsList() {
+        List<String> appointmentStrings = new ArrayList<>();
+        for (Appointment appointment : appointments) {
+            String formattedDate = android.text.format.DateFormat.format("MM/dd/yyyy HH:mm",
+                    appointment.getAppointmentDate()).toString();
+
+            String displayText = String.format("%s - %s with Dr. %s",
+                    formattedDate,
+                    appointment.getPet(),
+                    appointment.getVeterinarianName());
+
+            appointmentStrings.add(displayText);
+        }
+
+        appointmentsAdapter.clear();
+        appointmentsAdapter.addAll(appointmentStrings);
+        appointmentsAdapter.notifyDataSetChanged();
     }
 
     private void setOnClickListeners() {
@@ -140,12 +179,17 @@ public class MainActivity extends AppCompatActivity {
 //            launcher.launch(intent);
 //        });
 //
-//        scheduleBtn.setOnClickListener(v -> {
-//            Intent intent = new Intent(MainActivity.this, ScheduleActivity.class);
-//            intent.putExtra(REQUEST_CODE, SCHEDULE_REQUEST);
-//            intent.putParcelableArrayListExtra("pets", new ArrayList<>(pets));
-//            launcher.launch(intent);
-//        });
+        scheduleBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, AddAppointmentActivity.class);
+            intent.putExtra(REQUEST_CODE, SCHEDULE_REQUEST);
+            // Add pet names to the intent
+            ArrayList<String> petNames = new ArrayList<>();
+            for (Pet pet : pets) {
+                petNames.add(pet.getName());
+            }
+            intent.putStringArrayListExtra("pets", petNames);
+            launcher.launch(intent);
+        });
 //
 //        aboutBtn.setOnClickListener(v -> {
 //            Intent intent = new Intent(MainActivity.this, AboutActivity.class);

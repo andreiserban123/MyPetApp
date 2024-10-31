@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cl_add_consultation"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -12,9 +11,10 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/surugiu_george_alexandru_mb_paw"
-            android:contentDescription="@string/img_petcareplus_logo"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginTop="40dp"
+            android:contentDescription="@string/img_petcareplus_logo"
             android:insetLeft="0dp"
             android:insetTop="0dp"
             android:insetRight="0dp"
@@ -24,21 +24,20 @@
             app:iconGravity="textStart"
             app:iconPadding="0dp"
             app:iconSize="70dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="40dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/surugiu_george_alexandru_tv_animal"
             style="@style/AppTextViewStyle.SectionHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="70dp"
             android:text="@string/tv_choose_the_animal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/surugiu_george_alexandru_mb_paw"
-            android:layout_marginTop="70dp"
-            android:layout_marginStart="40dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/surugiu_george_alexandru_mb_paw" />
 
         <Spinner
             android:id="@+id/surugiu_george_alexandru_sp_animal"
@@ -57,33 +56,33 @@
             style="@style/AppTextViewStyle.SectionHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_sp_animal"
+            android:layout_marginStart="40dp"
             android:text="@string/tv_choose_the_doctor"
-            android:layout_marginStart="40dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_sp_animal" />
 
         <Spinner
             android:id="@+id/surugiu_george_alexandru_sp_doctor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_tv_doctor"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"
-            android:entries="@array/add_appointment_doctor"/>
+            android:entries="@array/add_appointment_doctor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_tv_doctor" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/surugiu_george_alexandru_til_consultationReason"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/surugiu_george_alexandru_sp_doctor"
-            app:layout_constraintStart_toStartOf="@id/surugiu_george_alexandru_sp_animal"
-            app:layout_constraintEnd_toEndOf="@id/surugiu_george_alexandru_sp_animal"
             android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"
-            android:layout_marginTop="10dp">
+            app:layout_constraintEnd_toEndOf="@id/surugiu_george_alexandru_sp_animal"
+            app:layout_constraintStart_toStartOf="@id/surugiu_george_alexandru_sp_animal"
+            app:layout_constraintTop_toBottomOf="@+id/surugiu_george_alexandru_sp_doctor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/surugiu_george_alexandru_tiet_consultationReason"
@@ -97,65 +96,75 @@
             style="@style/AppTextViewStyle.SectionHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
             android:text="@string/tv_select_a_date_for_your_appointment"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_til_consultationReason"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"/>
+            app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_til_consultationReason" />
 
         <CalendarView
             android:id="@+id/surugiu_george_alexandru_calendarView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_tv_consultationDate"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="10dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_tv_consultationDate" />
 
         <TimePicker
             android:id="@+id/surugiu_george_alexandru_tp_appointmentHour"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_calendarView"
-            app:layout_constraintStart_toStartOf="@id/surugiu_george_alexandru_calendarView"
-            app:layout_constraintEnd_toEndOf="@id/surugiu_george_alexandru_calendarView"
             android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"/>
+            android:layout_marginEnd="40dp"
+            app:layout_constraintEnd_toEndOf="@id/surugiu_george_alexandru_calendarView"
+            app:layout_constraintStart_toStartOf="@id/surugiu_george_alexandru_calendarView"
+            app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_calendarView" />
 
         <TextView
             android:id="@+id/surugiu_george_alxandru_tv_uploadImage"
             style="@style/AppTextViewStyle.SectionHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_tp_appointmentHour"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="40dp"
-            android:text="@string/tv_animal_s_picture" />
+            android:layout_marginTop="20dp"
+            android:text="@string/tv_animal_s_picture"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_tp_appointmentHour" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/surugiu_george_alexandru_btn_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/appointment_take_photo"
-            app:icon="@drawable/baseline_camera_alt_24"
-            app:layout_constraintStart_toEndOf="@id/surugiu_george_alxandru_tv_uploadImage"
-            app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_tp_appointmentHour"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="40dp"/>
+            android:layout_marginEnd="40dp"
+            android:text="@string/appointment_take_photo"
+            app:icon="@drawable/baseline_add_a_photo_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/surugiu_george_alxandru_tv_uploadImage"
+            app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_tp_appointmentHour" />
+
+        <ImageView
+            android:id="@+id/serban_andrei_appointment_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:contentDescription="Imagine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_btn_camera" />
 
         <Button
             android:id="@+id/surugiu_george_alexandru_bttnSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/bttn_save"
-            app:layout_constraintTop_toBottomOf="@+id/surugiu_george_alexandru_btn_camera"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="50dp"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="50dp"/>
+            android:text="@string/bttn_save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/serban_andrei_appointment_image" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

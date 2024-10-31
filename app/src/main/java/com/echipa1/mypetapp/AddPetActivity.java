@@ -16,9 +16,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 import classes.Pet;
 
 public class AddPetActivity extends AppCompatActivity {
@@ -75,7 +72,7 @@ public class AddPetActivity extends AppCompatActivity {
                 Pet newPet = new Pet(species, age, gender, weight, petName, breed, microchip, anual_vaccination);
                 Toast.makeText(getApplicationContext(), "Pet Created: " + newPet.getName(), Toast.LENGTH_SHORT).show();
 
-                savePetToTXT(newPet);
+//                savePetToTXT(newPet);
 
                 intent.putExtra(PET_KEY, newPet);
                 intent.putExtra("PET_NAME", newPet.getName());
@@ -90,25 +87,25 @@ public class AddPetActivity extends AppCompatActivity {
     }
 
     // Comment this is it does not work -> not tested
-    private void savePetToTXT(Pet pet) {
-        String petData = "Name: " + pet.getName() + "\n" +
-                "Species: " + pet.getSpecies() + "\n" +
-                "Breed: " + pet.getBreed() + "\n" +
-                "Gender: " + pet.getGender() + "\n" +
-                "Age: " + pet.getAge() + "\n" +
-                "Weight: " + pet.getWeight() + "\n" +
-                "Microchip: " + pet.isMicrochip() + "\n" +
-                "Annual Vaccination: " + pet.isAnual_vaccination() + "\n";
-
-        String file = "all_pets.tx";
-
-        try (FileOutputStream fos = openFileOutput(file, MODE_PRIVATE)) {
-            fos.write(petData.getBytes());
-        } catch (IOException e) {
-            Toast.makeText(this, "Error saving pet data", Toast.LENGTH_SHORT).show();
-            throw new RuntimeException(e);
-        }
-    }
+//    private void savePetToTXT(Pet pet) {
+//        String petData = "Name: " + pet.getName() + "\n" +
+//                "Species: " + pet.getSpecies() + "\n" +
+//                "Breed: " + pet.getBreed() + "\n" +
+//                "Gender: " + pet.getGender() + "\n" +
+//                "Age: " + pet.getAge() + "\n" +
+//                "Weight: " + pet.getWeight() + "\n" +
+//                "Microchip: " + pet.isMicrochip() + "\n" +
+//                "Annual Vaccination: " + pet.isAnual_vaccination() + "\n";
+//
+//        String file = "all_pets.tx";
+//
+//        try (FileOutputStream fos = openFileOutput(file, MODE_PRIVATE)) {
+//            fos.write(petData.getBytes());
+//        } catch (IOException e) {
+//            Toast.makeText(this, "Error saving pet data", Toast.LENGTH_SHORT).show();
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     private boolean isValid() {
         if (breed_editTxt.getText() == null ||

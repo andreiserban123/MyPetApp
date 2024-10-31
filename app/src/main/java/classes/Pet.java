@@ -53,6 +53,6 @@ public class Pet extends Animal implements Serializable {
 
     @Override
     public String toString() {
-        return "NAME: " + name + ", SPECIE:" + super.getSpecies();
+        return "NAME:" + name + ", SPECIE:" + super.getSpecies();
     }
 }
