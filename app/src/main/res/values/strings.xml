@@ -1,7 +1,7 @@
 <resources>
     <string name="client_id">883232123186-c2e9oo44jmun3ve59t7j8ub8nb5cgqns.apps.googleusercontent.com</string>
     <string name="app_name">MyPetApp</string>
-    <string name="my_pet_app">PetCare Plus 🐈</string>
+    <string name="my_pet_app">My Pet App 🐈</string>
     <string name="my_pets">My Pets</string>
     <string name="upcoming_appointments">Upcoming Appointments</string>
     <string name="schedule_vet">Schedule Vet</string>
@@ -28,6 +28,15 @@
     <string name="add_invalid_age">Invalid age</string>
     <string name="add_invalid_weight">Invalid weight</string>
     <string name="save">Save</string>
+    <string name="tiet_consultation_s_hour">Appointment\'s hour</string>
+    <string name="tv_select_a_date_for_your_appointment">Choose a date:</string>
+    <string name="tiet_appointment_reason">Appointment reason</string>
+    <string name="tv_choose_the_animal">Choose the animal:</string>
+    <string name="img_petcareplus_logo">PetCarePlus logo</string>
+    <string name="tv_animal_s_picture">Animal\'s picture:</string>
+    <string name="appointment_take_photo">Take Photo</string>
+    <string name="bttn_save">Save</string>
+    <string name="tv_choose_the_doctor">Choose the doctor:</string>
     <string-array name="add_pet_species">
         <item>Dog</item>
         <item>Cat</item>
@@ -36,5 +45,12 @@
         <item>Hamster</item>
         <item>Fish</item>
         <item>Turtle</item>
+    </string-array>
+    <string-array name="add_appointment_doctor">
+        <item>Dr. Aurelian Dragos</item>
+        <item>Dr Anton Ciobanu</item>
+        <item>Dr. Alecu Albu</item>
+        <item>Dr. Daria Pavel</item>
+        <item>Dr. Iulia Tunaru</item>
     </string-array>
 </resources>
