@@ -38,6 +38,13 @@
     <string name="bttn_save">Save</string>
     <string name="tv_choose_the_doctor">Choose the doctor:</string>
     <string name="taken_picture_appointment">Taken picture</string>
+    <string name="lastname">lastname</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="phone_number">Phone number</string>
+    <string name="city">City</string>
+    <string name="saveAccount">Save</string>
+    <string name="choose_your_city">Choose your city:</string>
     <string-array name="add_pet_species">
         <item>Dog</item>
         <item>Cat</item>
@@ -53,5 +60,38 @@
         <item>Dr. Alecu Albu</item>
         <item>Dr. Daria Pavel</item>
         <item>Dr. Iulia Tunaru</item>
+    </string-array>
+
+    <string-array name="add_city">
+        <item>Alba Iulia</item>
+        <item>Arad</item>
+        <item>Bacau</item>
+        <item>Baia Mare</item>
+        <item>Botosani</item>
+        <item>Braila</item>
+        <item>Brasov</item>
+        <item>Bucharest</item>
+        <item>Buzau</item>
+        <item>Cluj-Napoca</item>
+        <item>Constanta</item>
+        <item>Craiova</item>
+        <item>Deva</item>
+        <item>Drobeta-Turnu Severin</item>
+        <item>Focsani</item>
+        <item>Galati</item>
+        <item>Iasi</item>
+        <item>Oradea</item>
+        <item>Piatra Neamt</item>
+        <item>Pitesti</item>
+        <item>Ploiesti</item>
+        <item>Ramnicu Valcea</item>
+        <item>Satu Mare</item>
+        <item>Sibiu</item>
+        <item>Slatina</item>
+        <item>Suceava</item>
+        <item>Targu Jiu</item>
+        <item>Targu Mures</item>
+        <item>Timisoara</item>
+        <item>Tulcea</item>
     </string-array>
 </resources>
