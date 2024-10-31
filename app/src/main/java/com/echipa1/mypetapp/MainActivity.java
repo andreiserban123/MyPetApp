@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
             String formattedDate = android.text.format.DateFormat.format("MM/dd/yyyy HH:mm",
                     appointment.getAppointmentDate()).toString();
 
-            String displayText = String.format("%s - %s with Dr. %s",
+            String displayText = String.format("%s - %s with %s",
                     formattedDate,
                     appointment.getPet(),
                     appointment.getVeterinarianName());
