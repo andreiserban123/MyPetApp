@@ -52,6 +52,18 @@
         app:layout_constraintTop_toTopOf="@id/serban_andrei_main_tv_header" />
 
     <TextView
+        android:id="@+id/serban_andrei_main_account_name"
+        style="@style/AppTextViewStyle.SectionHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Welcome back, Andrei!"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/serban_andrei_main_tv_header" />
+
+    <TextView
         android:id="@+id/serban_andrei_main_tv_pets"
         style="@style/AppTextViewStyle.SectionHeader"
         android:layout_width="wrap_content"
@@ -59,7 +71,7 @@
         android:layout_marginTop="24dp"
         android:text="@string/my_pets"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/serban_andrei_main_tv_header" />
+        app:layout_constraintTop_toBottomOf="@id/serban_andrei_main_account_name" />
 
     <ListView
         android:id="@+id/serban_andrei_main_lv_pets"

@@ -1,14 +1,11 @@
 package com.echipa1.mypetapp;
 
 import android.content.Intent;
-import android.icu.util.Calendar;
 import android.os.Bundle;
 
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -24,16 +21,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import classes.Account;
+
 
 public class AddAccountActivity extends AppCompatActivity {
 
-    private ImageView imageView;
+    public static final String FIRST_NAME_KEY = "FIRST_NAME_KEY";
     private TextInputEditText tietFirstName;
     private TextInputEditText tietLastName;
     private TextInputEditText tietPhoneNumber;
     private Spinner spnCity;
     private Button btnSave;
     private Intent intent;
+    private ImageView imageView;
 
     private List<String> citiesList;
 
@@ -48,16 +48,32 @@ public class AddAccountActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        intent = getIntent();
+
+        initComp();
+
+
+        btnSave.setOnClickListener(v -> {
+            if (validation()) {
+                intent.putExtra(FIRST_NAME_KEY, tietFirstName.getText().toString());
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
+
+
+
     }
 
     private void initComp() {
-        imageView=findViewById(R.id.serban_mariana_luciana_ImageView);
-        tietFirstName=findViewById(R.id.serban_mariana_luciana_tiet_firstname);
-        tietLastName=findViewById(R.id.serban_mariana_luciana_tiet_lastname);
-        tietPhoneNumber=findViewById(R.id.serban_mariana_luciana_tiet_phoneNumber);
-        spnCity=findViewById(R.id.serban_mariana_luciana_spn_city);
-        btnSave=findViewById(R.id.serban_mariana_luciana_btnSave);
-        citiesList=new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.add_city)));
+        imageView = findViewById(R.id.serban_mariana_luciana_ImageView);
+        tietFirstName = findViewById(R.id.serban_mariana_luciana_tiet_firstname);
+        tietLastName = findViewById(R.id.serban_mariana_luciana_tiet_lastname);
+        tietPhoneNumber = findViewById(R.id.serban_mariana_luciana_tiet_phoneNumber);
+        spnCity = findViewById(R.id.serban_mariana_luciana_spn_city);
+        btnSave = findViewById(R.id.serban_mariana_luciana_btnSave);
+        citiesList = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.add_city)));
     }
 
     private boolean validation() {
@@ -103,28 +119,14 @@ public class AddAccountActivity extends AppCompatActivity {
             return false;
         }
 
-        // Validare City
         if (spnCity.getSelectedItem() == null) {
             showError("Please select a city");
             return false;
         }
-
         return true;
     }
 
-    // metoda pentru afișarea erorilor în Toast
     private void showError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
-
-    // item default spinner
-//    private void setupSpinner() {
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-//                this,
-//                android.R.layout.simple_spinner_item,
-//                citiesList);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spnCity.setAdapter(adapter);
-//    }
-
 }

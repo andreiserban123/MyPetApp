@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private MaterialButton profileBtn;
     private MaterialButton addPetBtn;
     private MaterialButton scheduleBtn;
+    private TextView tvName;
 
     private List<Appointment> appointments;
     private ArrayAdapter<String> appointmentsAdapter;
@@ -86,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         scheduleBtn = findViewById(R.id.serban_andrei_main_btn_schedule_vet);
         petsListView = findViewById(R.id.serban_andrei_main_lv_pets);
         appointmentsListView = findViewById(R.id.serban_andrei_main_lv_appointments);
+        tvName = findViewById(R.id.serban_andrei_main_account_name);
     }
 
     private void initLauncher() {
@@ -127,12 +130,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void handleProfileResult(Intent data) {
-        // Handle any profile updates
-        boolean profileUpdated = data.getBooleanExtra("profile_updated", false);
-        if (profileUpdated) {
-            // Refresh profile data
-            // refreshProfileData();
-            Toast.makeText(this, "Profile updated successfully!", Toast.LENGTH_SHORT).show();
+        String profileName = data.getStringExtra(AddAccountActivity.FIRST_NAME_KEY);
+
+        if (profileName != null) {
+            tvName.setText("Welcome Back, " + profileName);
         }
     }
 
@@ -173,12 +174,11 @@ public class MainActivity extends AppCompatActivity {
             launcher.launch(intent);
         });
 
-//        profileBtn.setOnClickListener(v -> {
-//            Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-//            intent.putExtra(REQUEST_CODE, PROFILE_REQUEST);
-//            launcher.launch(intent);
-//        });
-//
+        profileBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, AddAccountActivity.class);
+            intent.putExtra(REQUEST_CODE, PROFILE_REQUEST);
+            launcher.launch(intent);
+        });
         scheduleBtn.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, AddAppointmentActivity.class);
             intent.putExtra(REQUEST_CODE, SCHEDULE_REQUEST);
