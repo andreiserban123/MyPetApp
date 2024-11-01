@@ -21,8 +21,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import classes.Account;
-
 
 public class AddAccountActivity extends AppCompatActivity {
 
@@ -61,9 +59,6 @@ public class AddAccountActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
-
     }
 
     private void initComp() {
@@ -77,50 +72,46 @@ public class AddAccountActivity extends AppCompatActivity {
     }
 
     private boolean validation() {
-        // Validare First Name
         String firstName = tietFirstName.getText() != null ? tietFirstName.getText().toString().trim() : "";
         if (firstName.isEmpty()) {
-            tietFirstName.setError("Please enter your first name");
+            tietFirstName.setError(getString(R.string.error_emptyFirstName));
             return false;
         }
         if (firstName.length() < 2) {
-            tietFirstName.setError("First name should be at least 2 characters");
+            tietFirstName.setError(getString(R.string.error_firstNameLength));
             return false;
         }
         if (!firstName.matches("[a-zA-Z ]+")) {
-            tietFirstName.setError("First name should contain only letters");
+            tietFirstName.setError(getString(R.string.error_firstNameChar));
             return false;
         }
 
-
-        // Validare Last Name
         String lastName = tietLastName.getText() != null ? tietLastName.getText().toString().trim() : "";
         if (lastName.isEmpty()) {
-            tietLastName.setError("Please enter your last name");
+            tietLastName.setError(getString(R.string.error_emptyLastName));
             return false;
         }
         if (!lastName.matches("[a-zA-Z ]+")) {
-            tietLastName.setError("Last name should contain only letters");
+            tietLastName.setError(getString(R.string.error_lastNameChar));
             return false;
         }
         if (lastName.length() < 2) {
-            tietLastName.setError("Last name should be at least 2 characters");
+            tietLastName.setError(getString(R.string.error_lastNameLength));
             return false;
         }
 
-        // Validare Phone Number
         String phoneNumber = tietPhoneNumber.getText() != null ? tietPhoneNumber.getText().toString().trim() : "";
         if (phoneNumber.isEmpty()) {
-            tietPhoneNumber.setError("Please enter your phone number");
+            tietPhoneNumber.setError(getString(R.string.error_emptyPhone));
             return false;
         }
         if (!phoneNumber.matches("^07[0-9]{8}$")) {
-            tietPhoneNumber.setError("Please enter a valid phone number (07xxxxxxxx)");
+            tietPhoneNumber.setError(getString(R.string.error_invalidPhone));
             return false;
         }
 
         if (spnCity.getSelectedItem() == null) {
-            showError("Please select a city");
+            showError(getString(R.string.error_city));
             return false;
         }
         return true;

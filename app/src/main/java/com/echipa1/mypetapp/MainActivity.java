@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int PROFILE_REQUEST = 2;
     private static final int SCHEDULE_REQUEST = 3;
     private static final int ABOUT_REQUEST = 4;
+    public static final String APPOINTMENT = "appointment";
+    public static final String PETS = "pets";
     private List<Pet> pets;
 
     private MaterialButton aboutBtn;
@@ -125,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         if (newPet != null) {
             pets.add(newPet);
             petsAdapter.notifyDataSetChanged();
-            Toast.makeText(this, "New pet added successfully!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.new_pet_added, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -133,17 +135,17 @@ public class MainActivity extends AppCompatActivity {
         String profileName = data.getStringExtra(AddAccountActivity.FIRST_NAME_KEY);
 
         if (profileName != null) {
-            tvName.setText("Welcome Back, " + profileName);
+            tvName.setText(getString(R.string.welcome_back) + profileName);
         }
     }
 
     private void handleScheduleResult(Intent data) {
         if (data != null) {
-            Appointment newAppointment = (Appointment) data.getSerializableExtra("appointment");
+            Appointment newAppointment = (Appointment) data.getSerializableExtra(APPOINTMENT);
             if (newAppointment != null) {
                 appointments.add(newAppointment);
                 updateAppointmentsList();
-                Toast.makeText(this, "Appointment scheduled successfully!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.appointment_scheduled, Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -182,12 +184,12 @@ public class MainActivity extends AppCompatActivity {
         scheduleBtn.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, AddAppointmentActivity.class);
             intent.putExtra(REQUEST_CODE, SCHEDULE_REQUEST);
-            // Add pet names to the intent
+
             ArrayList<String> petNames = new ArrayList<>();
             for (Pet pet : pets) {
                 petNames.add(pet.getName());
             }
-            intent.putStringArrayListExtra("pets", petNames);
+            intent.putStringArrayListExtra(PETS, petNames);
             launcher.launch(intent);
         });
 //

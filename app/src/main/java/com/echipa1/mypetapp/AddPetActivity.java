@@ -20,6 +20,9 @@ import classes.Pet;
 
 public class AddPetActivity extends AppCompatActivity {
     public final static String PET_KEY = "PET_KEY";
+    public static final String PET_NAME = "PET_NAME";
+    public static final String MALE = "Male";
+    public static final String FEMALE = "Female";
     private TextInputEditText pet_name_editTxt;
     private Spinner species_spinner;
     private TextInputEditText breed_editTxt;
@@ -52,7 +55,7 @@ public class AddPetActivity extends AppCompatActivity {
         species_spinner = findViewById(R.id.timofte_serban_add_pet_spinner_species);
         breed_editTxt = findViewById(R.id.timofte_serban_add_pet_tiet_breed);
         age_editTxt = findViewById(R.id.timofte_serban_add_pet_tiet_age);
-        weight_editTxt = findViewById(R.id.timofte_serban_add_pet_tiet_weight);  // Inițializare weight
+        weight_editTxt = findViewById(R.id.timofte_serban_add_pet_tiet_weight);
         gender_radioGrp = findViewById(R.id.timofte_serban_add_pet_radGroup_gender);
         chip_radioGrp = findViewById(R.id.timofte_serban_add_pet_radGroup_chip);
         vacc_radioGrp = findViewById(R.id.timofte_serban_add_pet_radGroup_vacc);
@@ -63,19 +66,17 @@ public class AddPetActivity extends AppCompatActivity {
                 String petName = pet_name_editTxt.getText().toString().trim();
                 String species = species_spinner.getSelectedItem().toString();
                 String breed = breed_editTxt.getText().toString().trim();
-                String gender = (gender_radioGrp.getCheckedRadioButtonId() == R.id.timofte_serban_add_pet_radBtn_male) ? "Male" : "Female";
+                String gender = (gender_radioGrp.getCheckedRadioButtonId() == R.id.timofte_serban_add_pet_radBtn_male) ? MALE : FEMALE;
                 int age = Integer.parseInt(age_editTxt.getText().toString().trim());
                 double weight = Double.parseDouble(weight_editTxt.getText().toString().trim());
                 boolean microchip = chip_radioGrp.getCheckedRadioButtonId() == R.id.timofte_serban_add_pet_radBtn_chip_yes;
                 boolean anual_vaccination = vacc_radioGrp.getCheckedRadioButtonId() == R.id.timofte_serban_add_pet_radBtn_vacc_yes;
 
                 Pet newPet = new Pet(species, age, gender, weight, petName, breed, microchip, anual_vaccination);
-                Toast.makeText(getApplicationContext(), "Pet Created: " + newPet.getName(), Toast.LENGTH_SHORT).show();
-
-//                savePetToTXT(newPet);
+                Toast.makeText(getApplicationContext(), getString(R.string.pet_created) + newPet.getName(), Toast.LENGTH_SHORT).show();
 
                 intent.putExtra(PET_KEY, newPet);
-                intent.putExtra("PET_NAME", newPet.getName());
+                intent.putExtra(PET_NAME, newPet.getName());
 
                 setResult(RESULT_OK, intent);
                 finish();
@@ -85,27 +86,6 @@ public class AddPetActivity extends AppCompatActivity {
             }
         });
     }
-
-    // Comment this is it does not work -> not tested
-//    private void savePetToTXT(Pet pet) {
-//        String petData = "Name: " + pet.getName() + "\n" +
-//                "Species: " + pet.getSpecies() + "\n" +
-//                "Breed: " + pet.getBreed() + "\n" +
-//                "Gender: " + pet.getGender() + "\n" +
-//                "Age: " + pet.getAge() + "\n" +
-//                "Weight: " + pet.getWeight() + "\n" +
-//                "Microchip: " + pet.isMicrochip() + "\n" +
-//                "Annual Vaccination: " + pet.isAnual_vaccination() + "\n";
-//
-//        String file = "all_pets.tx";
-//
-//        try (FileOutputStream fos = openFileOutput(file, MODE_PRIVATE)) {
-//            fos.write(petData.getBytes());
-//        } catch (IOException e) {
-//            Toast.makeText(this, "Error saving pet data", Toast.LENGTH_SHORT).show();
-//            throw new RuntimeException(e);
-//        }
-//    }
 
     private boolean isValid() {
         if (breed_editTxt.getText() == null ||

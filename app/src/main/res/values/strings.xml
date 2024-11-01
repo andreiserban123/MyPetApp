@@ -45,6 +45,32 @@
     <string name="city">City</string>
     <string name="saveAccount">Save</string>
     <string name="choose_your_city">Choose your city:</string>
+    <string name="new_pet_added">New pet added successfully!</string>
+    <string name="welcome_back">"Welcome back, "</string>
+    <string name="appointment_scheduled">Appointment scheduled successfully!</string>
+    <string name="pet_created">"Pet Created: "</string>
+    <string name="error_emptyFirstName">Please enter your first name</string>
+    <string name="error_firstNameLength">First name should be at least 2 characters</string>
+    <string name="error_firstNameChar">First name should contain only letters</string>
+    <string name="error_emptyLastName">Please enter your last name</string>
+    <string name="error_lastNameChar">Last name should contain only letters</string>
+    <string name="error_lastNameLength">Last name should be at least 2 characters</string>
+    <string name="error_emptyPhone">Please enter your phone number</string>
+    <string name="error_invalidPhone">Please enter a valid phone number (07xxxxxxxx)</string>
+    <string name="error_city">Please select a city</string>
+    <string name="photo_captured">Photo captured successfully</string>
+    <string name="photo_cancelled">Photo capture cancelled</string>
+    <string name="camera_not_available">Camera not available</string>
+    <string name="error_pet">Please select a pet</string>
+    <string name="error_noDoctor">Please select a doctor</string>
+    <string name="error_emptyReason">Please enter a reason for the appointment</string>
+    <string name="error_reasonLength">Please enter a more detailed reason for the appointment</string>
+    <string name="error_futureDate">Please select a future date and time</string>
+    <string name="error_weekDays">Appointments are only available on weekdays</string>
+    <string name="error_appAfter9">Appointments are only available from 9 AM</string>
+    <string name="error_appBefore17">Appointments are only available until 5 PM</string>
+    <string name="error_lastApp16">Last appointment must start at 4:00 PM</string>
+    <string name="error_appAdvance">Appointments must be scheduled at least 1 hour in advance</string>
     <string-array name="add_pet_species">
         <item>Dog</item>
         <item>Cat</item>

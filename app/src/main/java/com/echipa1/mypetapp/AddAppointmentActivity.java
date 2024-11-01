@@ -34,6 +34,10 @@ import java.util.List;
 import classes.Appointment;
 
 public class AddAppointmentActivity extends AppCompatActivity {
+    public static final String DATA = "data";
+    public static final String PETS = "pets";
+    public static final String DOCTOR = "doctor";
+    public static final String APPOINTMENT = "appointment";
     private Spinner spnPet;
     private Spinner spnDoctor;
     private TextInputEditText tietReason;
@@ -49,15 +53,15 @@ public class AddAppointmentActivity extends AppCompatActivity {
                 if (result.getResultCode() == RESULT_OK) {
 
                     Bundle extras = result.getData().getExtras();
-                    photoBitmap = (Bitmap) extras.get("data");
+                    photoBitmap = (Bitmap) extras.get(DATA);
 
                     if (imageView != null && photoBitmap != null) {
                         imageView.setImageBitmap(photoBitmap);
                     }
 
-                    Toast.makeText(this, "Photo captured successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.photo_captured, Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Photo capture cancelled", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.photo_cancelled, Toast.LENGTH_SHORT).show();
                 }
             });
     private Calendar selectedDateTime;
@@ -82,7 +86,7 @@ public class AddAppointmentActivity extends AppCompatActivity {
                 cameraLauncher.launch(intent);
             } catch (Exception e) {
                 Log.println(Log.ERROR, "Camera", e.getMessage());
-                Toast.makeText(this, "Camera not available", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.camera_not_available, Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -106,7 +110,7 @@ public class AddAppointmentActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.surugiu_george_alexandru_bttnSave);
         imageView = findViewById(R.id.serban_andrei_appointment_image);
         selectedDateTime = Calendar.getInstance();
-        List<String> pets = intent.getStringArrayListExtra("pets");
+        List<String> pets = intent.getStringArrayListExtra(PETS);
         var petAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, pets);
         petAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnPet.setAdapter(petAdapter);
@@ -138,76 +142,70 @@ public class AddAppointmentActivity extends AppCompatActivity {
 
     private boolean validateInputs() {
         if (spnPet.getSelectedItem() == null) {
-            showError("Please select a pet");
+            showError(getString(R.string.error_pet));
             return false;
         }
 
         if (spnDoctor.getSelectedItem() == null) {
-            showError("Please select a doctor");
+            showError(getString(R.string.error_noDoctor));
             return false;
         }
 
         String reason = tietReason.getText() != null ? tietReason.getText().toString().trim() : "";
         if (reason.isEmpty()) {
-            showError("Please enter a reason for the appointment");
+            showError(getString(R.string.error_emptyReason));
             return false;
         }
 
         if (reason.length() < 5) {
-            showError("Please enter a more detailed reason for the appointment");
+            showError(getString(R.string.error_reasonLength));
             return false;
         }
 
-        // Update selected time
         selectedDateTime.set(Calendar.HOUR_OF_DAY, tpHour.getHour());
         selectedDateTime.set(Calendar.MINUTE, tpHour.getMinute());
         selectedDateTime.set(Calendar.SECOND, 0);
         selectedDateTime.set(Calendar.MILLISECOND, 0);
 
-        // Get current date/time
         Calendar currentDate = Calendar.getInstance();
         currentDate.set(Calendar.SECOND, 0);
         currentDate.set(Calendar.MILLISECOND, 0);
 
-        // Check if date is in the past
         if (selectedDateTime.before(currentDate)) {
-            showError("Please select a future date and time");
+            showError(getString(R.string.error_futureDate));
             return false;
         }
 
-        // Check if it's a weekend
         int dayOfWeek = selectedDateTime.get(Calendar.DAY_OF_WEEK);
         if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) {
-            showError("Appointments are only available on weekdays");
+            showError(getString(R.string.error_weekDays));
             return false;
         }
 
-        // Check working hours (9 AM - 5 PM)
         int hour = tpHour.getHour();
         int minute = tpHour.getMinute();
 
         if (hour < 9) {
-            showError("Appointments are only available from 9 AM");
+            showError(getString(R.string.error_appAfter9));
             return false;
         }
 
         if (hour >= 17) {
-            showError("Appointments are only available until 5 PM");
+            showError(getString(R.string.error_appBefore17));
             return false;
         }
 
         if (hour == 16 && minute > 0) {
-            showError("Last appointment must start at 4:00 PM");
+            showError(getString(R.string.error_lastApp16));
             return false;
         }
 
-        // For same-day appointments, ensure at least 1 hour in advance
         if (isSameDay(selectedDateTime, currentDate)) {
             Calendar oneHourFromNow = Calendar.getInstance();
             oneHourFromNow.add(Calendar.HOUR_OF_DAY, 1);
 
             if (selectedDateTime.before(oneHourFromNow)) {
-                showError("Appointments must be scheduled at least 1 hour in advance");
+                showError(getString(R.string.error_appAdvance));
                 return false;
             }
         }
@@ -250,8 +248,8 @@ public class AddAppointmentActivity extends AppCompatActivity {
             appointment.setPhotoBase64(photoBase64);
         }
 
-        intent.putExtra("doctor", selectedDoctor);
-        intent.putExtra("appointment", appointment);
+        intent.putExtra(DOCTOR, selectedDoctor);
+        intent.putExtra(APPOINTMENT, appointment);
 
         setResult(RESULT_OK, intent);
         finish();
