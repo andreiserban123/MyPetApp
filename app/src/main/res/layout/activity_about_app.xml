@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutAppActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/stoica_alexandra_textDespreNoi"
+        style="@style/AppTextViewStyle.Header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/about_our_app"
+        android:textColorLink="#090303"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/stoica_alexandra_introductionText"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="@string/First_About_Paragraph"
+        android:textAlignment="center"
+        android:textDirection="firstStrongLtr"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stoica_alexandra_textDespreNoi" />
+
+        <TextView
+            android:id="@+id/stoica_alexandra_subtitluFunctionalitatiTextView"
+            style="@style/AppTextViewStyle.SectionHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/quick_and_easy_use"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/stoica_alexandra_introductionText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteX="150dp" />
+
+        <TextView
+            android:id="@+id/stoica_alexandra_functionalitatiTextView"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Second_About_Paragraph"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/stoica_alexandra_subtitluFunctionalitatiTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteX="274dp"
+            tools:layout_editor_absoluteY="411dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
