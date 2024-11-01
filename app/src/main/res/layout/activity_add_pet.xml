@@ -126,6 +126,7 @@
                 android:id="@+id/timofte_serban_add_pet_tiet_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
                 android:hint="@string/your_pet_age" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -188,6 +189,7 @@
                 android:id="@+id/timofte_serban_add_pet_tiet_weight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
                 android:hint="@string/your_pet_weight" />
         </com.google.android.material.textfield.TextInputLayout>
 

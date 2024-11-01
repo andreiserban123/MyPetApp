@@ -88,6 +88,7 @@
                 android:id="@+id/surugiu_george_alexandru_tiet_consultationReason"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:hint="@string/tiet_appointment_reason" />
         </com.google.android.material.textfield.TextInputLayout>
 

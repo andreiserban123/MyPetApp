@@ -68,6 +68,7 @@
             android:id="@+id/serban_mariana_luciana_tiet_phoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="phone"
             android:hint="@string/phone_number" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,6 +88,7 @@
             android:id="@+id/serban_mariana_luciana_tiet_lastname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
             android:hint="@string/last_name" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -106,27 +108,8 @@
             android:id="@+id/serban_mariana_luciana_tiet_firstname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
             android:hint="@string/first_name" />
     </com.google.android.material.textfield.TextInputLayout>
-
-
-
-    <!--    <com.google.android.material.textfield.TextInputLayout-->
-<!--        android:id="@+id/serban_mariana_luciana_til_city"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/serban_mariana_luciana_til_phoneNumber"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:layout_marginStart="40dp"-->
-<!--        android:layout_marginEnd="40dp"-->
-<!--        android:layout_marginTop="20dp">-->
-
-<!--        <com.google.android.material.textfield.TextInputEditText-->
-<!--            android:id="@+id/serban_mariana_luciana_tiet_city"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="@string/city" />-->
-<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
