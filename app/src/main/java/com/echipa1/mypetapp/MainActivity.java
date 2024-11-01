@@ -124,10 +124,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void handleAddPetResult(Intent data) {
         Pet newPet = (Pet) data.getSerializableExtra(AddPetActivity.PET_KEY);
+        String name = data.getStringExtra(AddPetActivity.PET_NAME);
         if (newPet != null) {
             pets.add(newPet);
             petsAdapter.notifyDataSetChanged();
-            Toast.makeText(this, R.string.new_pet_added, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.new_pet_added + "with name: " + name, Toast.LENGTH_SHORT).show();
         }
     }
 
