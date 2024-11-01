@@ -13,11 +13,11 @@
 
         <ImageView
             android:id="@+id/timofte_serban_add_pet_icon"
-            android:layout_width="50dp"
+            android:layout_width="100dp"
 
-            android:layout_height="50dp"
+            android:layout_height="100dp"
 
-            android:layout_margin="12dp"
+            android:layout_marginTop="40dp"
             android:background="@color/colorPrimary"
             android:src="@drawable/baseline_pets_24"
 
