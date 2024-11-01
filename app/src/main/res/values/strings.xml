@@ -71,6 +71,7 @@
     <string name="error_appBefore17">Appointments are only available until 5 PM</string>
     <string name="error_lastApp16">Last appointment must start at 4:00 PM</string>
     <string name="error_appAdvance">Appointments must be scheduled at least 1 hour in advance</string>
+    <string name="set_your_account_information">Set your account information</string>
     <string-array name="add_pet_species">
         <item>Dog</item>
         <item>Cat</item>

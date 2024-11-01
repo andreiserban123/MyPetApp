@@ -19,6 +19,20 @@
         app:srcCompat="@drawable/baseline_account_circle_24" />
 
     <TextView
+        android:id="@+id/serban_mariana_luciana_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:gravity="center"
+        android:text="@string/set_your_account_information"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/serban_mariana_luciana_ImageView" />
+
+
+    <TextView
         android:id="@+id/serban_mariana_luciana_tv_city"
         style="@style/AppTextViewStyle.SectionHeader"
         android:layout_width="wrap_content"
@@ -102,7 +116,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/serban_mariana_luciana_ImageView">
+        app:layout_constraintTop_toBottomOf="@+id/serban_mariana_luciana_title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/serban_mariana_luciana_tiet_firstname"
@@ -113,3 +127,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
