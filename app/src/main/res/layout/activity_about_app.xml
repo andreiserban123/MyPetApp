@@ -12,22 +12,23 @@
         android:layout_height="match_parent">
 
 
-    <TextView
-        android:id="@+id/stoica_alexandra_textDespreNoi"
-        style="@style/AppTextViewStyle.Header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/about_our_app"
-        android:textColorLink="#090303"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/stoica_alexandra_textDespreNoi"
+            style="@style/AppTextViewStyle.Header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34dp"
+            android:text="@string/about_our_app"
+            android:textColorLink="#090303"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/stoica_alexandra_introductionText"
+        style="@style/AppTextViewStyle"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -49,15 +50,15 @@
             android:layout_marginTop="30dp"
             android:text="@string/quick_and_easy_use"
             android:textAlignment="center"
-            android:textSize="20dp"
+            android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/stoica_alexandra_introductionText"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:layout_editor_absoluteX="150dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/stoica_alexandra_iconitaPAW" />
 
         <TextView
             android:id="@+id/stoica_alexandra_functionalitatiTextView"
+            style="@style/AppTextViewStyle"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="@string/Second_About_Paragraph"
@@ -69,5 +70,69 @@
             app:layout_constraintEnd_toEndOf="parent"
             tools:layout_editor_absoluteX="274dp"
             tools:layout_editor_absoluteY="411dp" />
+
+        <ImageView
+            android:id="@+id/stoica_alexandra_iconitaPAW"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="24dp"
+            app:tint="@color/colorPrimary"
+            app:layout_constraintBottom_toTopOf="@+id/stoica_alexandra_subtitluFunctionalitatiTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/stoica_alexandra_introductionText"
+            app:srcCompat="@drawable/baseline_pets_24" />
+
+        <TextView
+            android:id="@+id/stoica_alexandra_contactTextView"
+            style="@style/AppTextViewStyle.SectionHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="@string/contact_us_here"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/stoica_alexandra_veterinariImg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteX="175dp"
+            tools:layout_editor_absoluteY="659dp" />
+
+        <ImageView
+            android:id="@+id/stoica_alexandra_veterinariImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/stoica_alexandra_functionalitatiTextView"
+            app:srcCompat="@drawable/veterinari_img"
+            tools:layout_editor_absoluteX="137dp"
+            tools:layout_editor_absoluteY="841dp" />
+
+        <TextView
+            android:id="@+id/stoica_alexandra_telefonTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Numar_telefon"
+            style="@style/AppTextViewStyle"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/stoica_alexandra_contactTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="400dp"
+            tools:layout_editor_absoluteX="190dp"
+            tools:layout_editor_absoluteY="1633dp" />
+
+        <ImageView
+            android:id="@+id/stoica_alexandra_phoneIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/stoica_alexandra_contactTextView"
+            app:layout_constraintEnd_toStartOf="@+id/stoica_alexandra_telefonTextView"
+            app:srcCompat="@drawable/baseline_phone_24"
+            tools:layout_editor_absoluteX="143dp"
+            tools:layout_editor_absoluteY="1526dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
