@@ -22,13 +22,13 @@ import classes.Appointment;
 import classes.Pet;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String APPOINTMENT = "appointment";
+    public static final String PETS = "pets";
     private static final String REQUEST_CODE = "request_code";
     private static final int ADD_PET_REQUEST = 1;
     private static final int PROFILE_REQUEST = 2;
     private static final int SCHEDULE_REQUEST = 3;
     private static final int ABOUT_REQUEST = 4;
-    public static final String APPOINTMENT = "appointment";
-    public static final String PETS = "pets";
     private List<Pet> pets;
 
     private MaterialButton aboutBtn;
@@ -193,11 +193,9 @@ public class MainActivity extends AppCompatActivity {
             intent.putStringArrayListExtra(PETS, petNames);
             launcher.launch(intent);
         });
-//
-//        aboutBtn.setOnClickListener(v -> {
-//            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
-//            intent.putExtra(REQUEST_CODE, ABOUT_REQUEST);
-//            launcher.launch(intent);
-//        });
+        aboutBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, AboutAppActivity.class);
+            startActivity(intent);
+        });
     }
 }

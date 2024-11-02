@@ -254,6 +254,4 @@ public class AddAppointmentActivity extends AppCompatActivity {
         setResult(RESULT_OK, intent);
         finish();
     }
-
-
 }
