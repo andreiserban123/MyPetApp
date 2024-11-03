@@ -80,6 +80,9 @@
     <string name="contact_us_here">Contact us here</string>
     <string name="select_your_pet_specie">Select your pet specie</string>
     <string name="paw_logo">Paw logo</string>
+    <string name="vet_picture">Vet picture</string>
+    <string name="phomne_logo">Phomne logo</string>
+    <string name="paw_icon">Paw icon</string>
     <string-array name="add_pet_species">
         <item>Dog</item>
         <item>Cat</item>
