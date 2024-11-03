@@ -78,6 +78,8 @@
     <string name="Second_About_Paragraph">Our app is really intuitive and easy to use. First, you need to set up your profile so that clinics can easily contact you after you made the appointment. Then, add all your pets to ensure each one gets the care they need. Finally, using the \'Schedule Vet\' button, select your preferred date and time to book a visit to the vet with your furry friend.</string>
     <string name="Numar_telefon">0700100800</string>
     <string name="contact_us_here">Contact us here</string>
+    <string name="select_your_pet_specie">Select your pet specie</string>
+    <string name="paw_logo">Paw logo</string>
     <string-array name="add_pet_species">
         <item>Dog</item>
         <item>Cat</item>

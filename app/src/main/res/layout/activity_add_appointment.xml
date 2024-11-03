@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -36,6 +37,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="70dp"
             android:text="@string/tv_choose_the_animal"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/surugiu_george_alexandru_mb_paw" />
 
@@ -44,7 +46,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="40dp"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +58,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
+            android:layout_marginTop="8dp"
             android:text="@string/tv_choose_the_doctor"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_sp_animal" />
 
@@ -66,7 +69,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"
             android:entries="@array/add_appointment_doctor"
             android:minHeight="48dp"
@@ -101,6 +103,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="20dp"
             android:text="@string/tv_select_a_date_for_your_appointment"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_til_consultationReason" />
 
@@ -108,7 +111,6 @@
             android:id="@+id/surugiu_george_alexandru_calendarView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:clickable="true"
             android:focusable="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -133,6 +135,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="20dp"
             android:text="@string/tv_animal_s_picture"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/surugiu_george_alexandru_tp_appointmentHour" />
 
