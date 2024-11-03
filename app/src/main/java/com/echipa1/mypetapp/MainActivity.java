@@ -3,6 +3,7 @@ package com.echipa1.mypetapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -125,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
     private void handleAddPetResult(Intent data) {
         Pet newPet = (Pet) data.getSerializableExtra(AddPetActivity.PET_KEY);
         String name = data.getStringExtra(AddPetActivity.PET_NAME);
+        Log.i("MainActivity", "Pet name: " + name);
         if (newPet != null) {
             pets.add(newPet);
             petsAdapter.notifyDataSetChanged();
